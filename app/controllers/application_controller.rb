@@ -4,6 +4,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
+ 
+  def authentication
+    authenticate_or_request_with_http_basic do |username, password|
+      username = ENV["ADMIN_USER"] && ENV["ADMIN_PASSWORD"]
+    end 
+  end  
 
   def cart
     # value = cookies[:cart] || JSON.generate({})

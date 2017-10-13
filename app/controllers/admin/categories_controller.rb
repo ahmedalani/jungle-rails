@@ -1,4 +1,6 @@
 class Admin::CategoriesController < ApplicationController
+ 
+  before_filter :authentication  
 
   def index
     @categories = Category.all
