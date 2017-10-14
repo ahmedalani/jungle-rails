@@ -21,11 +21,36 @@
           <dt>Quantity</dt>
           <dd><%= @product.quantity %></dd>
           <dt>Price</dt>
-          <dd><%= @product.price %></dd>
+          <dd><%= @product.price %></dd>          
         </dl>
       </div>
     </div>
 
   </article>
+  <% if current_user  %>
+    <%= form_for [@product, @review] do |f| %>
+      <% if f.object.errors.any? %>
+        <div class="alert alert-danger">
+          <strong>The following errors prevented saving:</strong>
+          <ul>
+            <% f.object.errors.full_messages.each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      description: <%= f.text_field :description, size: 45 %><br />
+      <%= f.select :rating, [1,2,3,4,5] %>
+      <%= f.submit %>
+    <% end %>
+  <% end %>
 
+  <table class="table table-bordered">
+    <% @product.reviews.reverse.each do |review| %>
+      <%= render review %>
+      <%= if current_user.id == review.user_id %>
+        <button type='delete'>Delete</button>
+      <% end %>
+    <% end %>
+  </table>  
 </section>

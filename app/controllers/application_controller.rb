@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     authenticate_or_request_with_http_basic do |username, password|
       username = ENV["ADMIN_USER"] && ENV["ADMIN_PASSWORD"]
     end 
-  end  
+  end 
 
   def cart
     # value = cookies[:cart] || JSON.generate({})
@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def authorize
-    redirect_to '/login' unless current_user
+    redirect_to login_path flash[:error] = "You must be logged in to access this section" unless current_user
   end
 
 end

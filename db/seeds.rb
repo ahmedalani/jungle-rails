@@ -20,6 +20,7 @@ unless Rails.env.development?
 end
 
 # Let's do this ...
+user = User.create! first_name: 'Ahmed', last_name: 'Alani', email: 'ah@med.com', password: 'Ahmed'
 
 ## CATEGORIES
 
@@ -35,7 +36,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -43,7 +44,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -51,7 +52,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -59,7 +60,7 @@ cat1.products.create!({
   price: 34.49
 })
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Hipster Socks',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel4.jpg'),
@@ -67,7 +68,7 @@ cat1.products.create!({
   price: 25.00
 })
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Russian Spy Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel5.jpg'),
@@ -75,7 +76,7 @@ cat1.products.create!({
   price: 1_225.00
 })
 
-cat1.products.create!({
+product = cat1.products.create!({
   name:  'Human Feet Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel6.jpg'),
@@ -84,7 +85,7 @@ cat1.products.create!({
 })
 
 
-cat2.products.create!({
+product = cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics1.jpg'),
@@ -92,7 +93,7 @@ cat2.products.create!({
   price: 164.49
 })
 
-cat2.products.create!({
+product = cat2.products.create!({
   name:  'Hotdog Slicer',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics2.jpg'),
@@ -100,7 +101,7 @@ cat2.products.create!({
   price: 26.00
 })
 
-cat2.products.create!({
+product = cat2.products.create!({
   name:  'World\'s Largest Smartwatch',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics3.jpg'),
@@ -108,7 +109,7 @@ cat2.products.create!({
   price: 2_026.29
 })
 
-cat3.products.create!({
+product = cat3.products.create!({
   name:  'Optimal Sleeping Bed',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture1.jpg'),
@@ -116,7 +117,7 @@ cat3.products.create!({
   price: 3_052.00
 })
 
-cat3.products.create!({
+product = cat3.products.create!({
   name:  'Electric Chair',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture2.jpg'),
@@ -124,13 +125,28 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+product = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
   quantity: 23,
   price: 2_483.75
 })
+
+product.reviews.create!({description: "this product is great!", rating: 5, user: user})
+# product2.reviews.create!({description: "black", rating: 3, user: user})
+# product3.reviews.create!({description: "black", rating: 3, user: user})
+# product4.reviews.create!({description: "black", rating: 3, user: user})
+# product5.reviews.create!({description: "black", rating: 3, user: user})
+# product6.reviews.create!({description: "black", rating: 3, user: user})
+# product7.reviews.create!({description: "black", rating: 3, user: user})
+# product8.reviews.create!({description: "black", rating: 3, user: user})
+# product9.reviews.create!({description: "black", rating: 3, user: user})
+# product10.reviews.create!({description: "black", rating: 3, user: user})
+# product11.reviews.create!({description: "black", rating: 3, user: user})
+# product12.reviews.create!({description: "black", rating: 3, user: user})
+# reviews.create!({description: "red", rating: 4})
+
 
 
 puts "DONE!"
