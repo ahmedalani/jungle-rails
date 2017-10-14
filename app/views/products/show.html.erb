@@ -41,16 +41,13 @@
       <% end %>
       description: <%= f.text_field :description, size: 45 %><br />
       <%= f.select :rating, [1,2,3,4,5] %>
-      <%= f.submit %>
+      <%= f.submit class: "btn btn-default" %>
     <% end %>
   <% end %>
 
   <table class="table table-bordered">
     <% @product.reviews.reverse.each do |review| %>
       <%= render review %>
-      <%= if current_user.id == review.user_id %>
-        <button type='delete'>Delete</button>
-      <% end %>
     <% end %>
   </table>  
 </section>

@@ -23,4 +23,12 @@ class ReviewsController < ApplicationController
     )
   end
 
+  def destroy    
+    @product = Product.find params[:product_id]
+    @review = Review.find params[:id]
+    @review.destroy
+    render "/products/show"
+  end 
+
+
 end
