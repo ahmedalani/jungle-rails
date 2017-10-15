@@ -39,7 +39,7 @@
           </ul>
         </div>
       <% end %>
-      description: <%= f.text_field :description, size: 45 %><br />
+      description: <%= f.text_field :description, :placeholder=> 'type Review here', size: 45 %><br />
       <%= f.select :rating, [1,2,3,4,5] %>
       <%= f.submit class: "btn btn-default" %>
     <% end %>
